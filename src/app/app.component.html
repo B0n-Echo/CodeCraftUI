@@ -1,22 +1,116 @@
 <div class="container">
 
-    <div class ="side">
-      <div class="sidenav">
-        <button class="ui-button arrow"></button>
-        <menu-item></menu-item>
-      </div>
+
+  <div class ="side">
+    <div class="sidenav">
+      <button class="ui-button arrow" (click)="onBack($event)"></button>
+      <menu>
+        <div class="nav-wrap">
+          <nav class="main-nav" role="navigation">
+            <ul class="unstyled list-hover-slide">
+              <img src="../assets/images/lamp.png"
+              [ngClass]="{ 'selectedImg': item == 1 }"
+              alt="">
+              <li class="card"
+              [ngClass]="{ 'selectedCard': item == 1 }"
+              (click)="onChangeTab($event,'Bed')">
+                <a>BED LAMP</a>
+              </li>
+
+              <img src="../assets/images/ac.png"
+              [ngClass]="{ 'selectedImg': item == 2 }"
+              alt="">
+              <li class="card"
+              [ngClass]="{ 'selectedCard': item == 2 }"
+              (click)="onChangeTab($event,'Noria')">
+              <a>NORIA AC</a></li>
+
+              <img src="../assets/images/tv.png"
+              [ngClass]="{ 'selectedImg': item == 3 }"
+               alt="">
+              <li class="card"
+              [ngClass]="{ 'selectedCard': item == 3 }"
+              (click)="onChangeTab($event,'LGTV')">
+              <a>LG TV</a></li>
+
+              <img src="../assets/images/thermostat.png"
+              [ngClass]="{ 'selectedImg': item == 4 }"
+              alt="">
+              <li class="card"
+              [ngClass]="{ 'selectedCard': item == 4 }"
+              (click)="onChangeTab($event,'Thermostat')">
+              <a>THERMOSTAT</a></li>
+            </ul>
+          </nav>
+        </div>
+      </menu>
     </div>
+  </div>
 
-    <div class="content">
-          <header>
-            DEVICES
-          </header>
 
-          <button class="ui-button plus"></button>
+  <div class="content">
+        <header>
+          DEVICES
+        </header>
 
-          <section class="content-holder">
-              <router-outlet></router-outlet>
+
+        <button class="ui-button bckImg plus"></button>
+
+
+        <section class="content-holder">
+          <section  *ngIf="isClicked === false">
+              <label class="nav-title">Please Select Something From Nav Bar</label>
           </section>
-    </div>
-</div>
 
+          <section id="about" class="content-holder" *ngIf="isClicked === true">
+            <div>
+              <label class="nav-title">{{navTitle}}</label>
+
+              <label class="switch">
+                 <input type="checkbox">
+                 <span class="slider round"></span>
+             </label>
+            </div>
+
+
+            <div class="info-div">
+              <label class="line">SHADES</label>
+              <div>
+                  <div class="checkboxFour">
+                      <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                      <label for="checkboxFourInput red"></label>
+                  </div>
+                  <div class="checkboxFour">
+                      <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                      <label for="checkboxFourInput blue"></label>
+                  </div>
+                  <div class="checkboxFour">
+                      <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                      <label for="checkboxFourInput blue"></label>
+                  </div>
+                  <div class="checkboxFour">
+                      <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                      <label for="checkboxFourInput blue"></label>
+                  </div>
+                  <div class="checkboxFour">
+                      <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                      <label for="checkboxFourInput blue"></label>
+                  </div>
+              </div>
+            </div>
+            <div class="info-div">
+              <label class="line">MODE</label>
+            </div>
+            <div class="info-div">
+              <label class="line">INTENSITY</label>
+            </div>
+          </section>
+
+
+            <!-- <section id ="new">
+
+
+            </section> -->
+        </section>
+  </div>
+</div>
